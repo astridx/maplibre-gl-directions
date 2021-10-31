@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Display driving directions</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <link
+      href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
+    <script src="../dist/maplibre-gl-directions.js"></script>
+    <script src="../.env"></script>
+    <link
+      rel="stylesheet"
+      href="../dist/maplibre-gl-directions.css"
+      type="text/css"
+    />
+    <div id="map"></div>
+
+    <script>
+      var map = new maplibregl.Map({
+        container: "map",
+        //style: 'https://demotiles.maplibre.org/style.json',
+        style: "https://api.maptiler.com/maps/streets/style.json?key=" + config.MAPTILER_TOKEN,
+        center: [-4.488582, 36.86133],
+        zoom: 2,
+      });
+
+      var directions = new MapLibreDirections({
+        unit: "metric",
+        interactive: true,
+        controls: {
+          inputs: true,
+          instructions: true,
+          profileSwitcher: true,
+        },
+        profile: "driving",
+      });
+
+      this.map.on("load", () => {
+        showRoute();
+      });
+
+      function showRoute() {
+        directions.setOrigin("Koblenz");
+        directions.setDestination("50.488582, 7.861330");
+      }
+      map.addControl(directions, "top-left");
+    </script>
+  </body>
+</html>
