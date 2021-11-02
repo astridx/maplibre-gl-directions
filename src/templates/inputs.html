@@ -1,10 +1,10 @@
-<div class='mapbox-directions-component mapbox-directions-inputs'>
-  <div class='mapbox-directions-component-keyline'>
-    <div class='mapbox-directions-origin'>
-      <label class='mapbox-form-label'>
+<div class='maplibre-directions-component maplibre-directions-inputs'>
+  <div class='maplibre-directions-component-keyline'>
+    <div class='maplibre-directions-origin'>
+      <label class='maplibre-form-label'>
         <span class='directions-icon directions-icon-depart'></span>
       </label>
-      <div id='mapbox-directions-origin-input'></div>
+      <div id='maplibre-directions-origin-input'></div>
     </div>
 
     <button
@@ -12,47 +12,47 @@
       title='Reverse origin &amp; destination'>
     </button>
 
-    <div class='mapbox-directions-destination'>
-      <label class='mapbox-form-label'>
+    <div class='maplibre-directions-destination'>
+      <label class='maplibre-form-label'>
         <span class='directions-icon directions-icon-arrive'></span>
       </label>
-      <div id='mapbox-directions-destination-input'></div>
+      <div id='maplibre-directions-destination-input'></div>
     </div>
   </div>
 
   <% if (controls.profileSwitcher) { %>
-  <div class='mapbox-directions-profile mapbox-directions-component-keyline mapbox-directions-clearfix'><input
-      id='mapbox-directions-profile-driving-traffic'
+  <div class='maplibre-directions-profile maplibre-directions-component-keyline maplibre-directions-clearfix'><input
+      id='maplibre-directions-profile-driving-traffic'
       type='radio'
       name='profile'
-      value='mapbox/driving-traffic'
-      <% if (profile === 'mapbox/driving-traffic') { %>checked<% } %>
+      value='maplibre/driving-traffic'
+      <% if (profile === 'maplibre/driving-traffic') { %>checked<% } %>
     />
-    <label for='mapbox-directions-profile-driving-traffic'>Traffic</label>
+    <label for='maplibre-directions-profile-driving-traffic'>Traffic</label>
     <input
-      id='mapbox-directions-profile-driving'
+      id='maplibre-directions-profile-driving'
       type='radio'
       name='profile'
-      value='mapbox/driving'
-      <% if (profile === 'mapbox/driving') { %>checked<% } %>
+      value='maplibre/driving'
+      <% if (profile === 'maplibre/driving') { %>checked<% } %>
     />
-    <label for='mapbox-directions-profile-driving'>Driving</label>
+    <label for='maplibre-directions-profile-driving'>Driving</label>
     <input
-      id='mapbox-directions-profile-walking'
+      id='maplibre-directions-profile-walking'
       type='radio'
       name='profile'
-      value='mapbox/walking'
-      <% if (profile === 'mapbox/walking') { %>checked<% } %>
+      value='maplibre/walking'
+      <% if (profile === 'maplibre/walking') { %>checked<% } %>
     />
-    <label for='mapbox-directions-profile-walking'>Walking</label>
+    <label for='maplibre-directions-profile-walking'>Walking</label>
     <input
-      id='mapbox-directions-profile-cycling'
+      id='maplibre-directions-profile-cycling'
       type='radio'
       name='profile'
-      value='mapbox/cycling'
-      <% if (profile === 'mapbox/cycling') { %>checked<% } %>
+      value='maplibre/cycling'
+      <% if (profile === 'maplibre/cycling') { %>checked<% } %>
     />
-    <label for='mapbox-directions-profile-cycling'>Cycling</label>
+    <label for='maplibre-directions-profile-cycling'>Cycling</label>
   </div>
   <% } %>
 </div>

@@ -20,7 +20,7 @@ import Instructions from './controls/instructions';
  * @class MapLibreDirections
  *
  * @param {Object} options
- * @param {Array} [options.styles] Override default layer properties of the [directions source](https://github.com/mapbox/mapbox-gl-directions/blob/master/src/directions_style.js). Documentation for each property are specified in the [Mapbox GL Style Reference](https://www.mapbox.com/mapbox-gl-style-spec/).
+ * @param {Array} [options.styles] Override default layer properties of the [directions source](https://github.com/astridx/maplibre-gl-directions/blob/master/src/directions_style.js). Documentation for each property are specified in the [Mapbox GL Style Reference](https://www.mapbox.com/mapbox-gl-style-spec/).
  * @param {String} [options.api="https://api.mapbox.com/directions/v5/"] Override default routing endpoint url
  * @param {Boolean} [options.interactive=true] Enable/Disable mouse or touch interactivity from the plugin
  * @param {String} [options.profile="driving"] Routing profile to use. Options: `mapbox/driving-traffic`, `mapbox/driving`, `mapbox/walking`, `mapbox/cycling`
@@ -46,7 +46,7 @@ import Instructions from './controls/instructions';
  *   unit: 'metric',
  *   profile: 'driving'
  * });
- * // add to your mapboxgl map
+ * // add to your maplibregl map
  * map.addControl(directions);
  *
  * @return {MapLibreDirections} `this`
@@ -71,7 +71,7 @@ export default class MapLibreDirections {
     const { controls } = store.getState();
 
     var el = this.container = document.createElement('div');
-    el.className = 'mapboxgl-ctrl-directions mapboxgl-ctrl';
+    el.className = 'maplibregl-ctrl-directions maplibregl-ctrl';
 
     // Add controls to the page
     const inputEl = document.createElement('div');

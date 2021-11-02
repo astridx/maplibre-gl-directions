@@ -12,7 +12,7 @@ let errorTemplate = template(fs.readFileSync(__dirname + '/../templates/error.ht
  * @param {HTMLElement} el Summary parent container
  * @param {Object} store A redux store
  * @param {Object} actions Actions an element can dispatch
- * @param {Object} map The mapboxgl instance
+ * @param {Object} map The maplibregl instance
  * @private
  */
 export default class Instructions {
@@ -56,7 +56,7 @@ export default class Instructions {
           distance: utils.format.duration(direction.duration)
         });
 
-        const steps = this.container.querySelectorAll('.mapbox-directions-step');
+        const steps = this.container.querySelectorAll('.maplibre-directions-step');
 
         Array.prototype.forEach.call(steps, (el) => {
           const lng = el.getAttribute('data-lng');

@@ -5,7 +5,6 @@ import debounce from 'lodash.debounce';
 import { EventEmitter } from 'events';
 import utils from '../utils';
 
-// Geocoder - this slightly mimicks the mapboxl-gl-geocoder but isn't an exact replica.
 // Once gl-js plugins can be added to custom divs, we should be able to require mapbox-gl-geocoder
 // instead of including it here
 
@@ -23,7 +22,7 @@ export default class Geocoder {
 
     // Template
     var el = document.createElement('div');
-    el.className = 'mapboxgl-ctrl-geocoder';
+    el.className = 'maplibregl-ctrl-geocoder';
 
     var icon = document.createElement('span');
     icon.className = 'geocoder-icon geocoder-icon-search';

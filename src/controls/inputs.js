@@ -12,7 +12,7 @@ let tmpl = template(fs.readFileSync(__dirname + '/../templates/inputs.html', 'ut
  * @param {HTMLElement} el Summary parent container
  * @param {Object} store A redux store
  * @param {Object} actions Actions an element can dispatch
- * @param {Object} map The mapboxgl instance
+ * @param {Object} map The maplibregl instance
  * @private
  */
 export default class Inputs {
@@ -68,13 +68,13 @@ export default class Inputs {
     this.originInput = new Geocoder(Object.assign({}, {}, geocoder, {flyTo, placeholder: placeholderOrigin, zoom}));
 
     const originEl = this.originInput.onAdd(this._map);
-    const originContainerEl = this.container.querySelector('#mapbox-directions-origin-input');
+    const originContainerEl = this.container.querySelector('#maplibre-directions-origin-input');
     originContainerEl.appendChild(originEl);
 
     this.destinationInput = new Geocoder(Object.assign({}, {}, geocoder, {flyTo, placeholder: placeholderDestination, zoom}));
 
     const destinationEl = this.destinationInput.onAdd(this._map);
-    this.container.querySelector('#mapbox-directions-destination-input').appendChild(destinationEl);
+    this.container.querySelector('#maplibre-directions-destination-input').appendChild(destinationEl);
 
     this.originInput.on('result', (e) => {
       const coords = e.result.geometry.coordinates;

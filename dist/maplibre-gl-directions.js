@@ -7212,7 +7212,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// Geocoder - this slightly mimicks the mapboxl-gl-geocoder but isn't an exact replica.
 // Once gl-js plugins can be added to custom divs, we should be able to require mapbox-gl-geocoder
 // instead of including it here
 
@@ -7234,7 +7233,7 @@ var Geocoder = function () {
 
       // Template
       var el = document.createElement('div');
-      el.className = 'mapboxgl-ctrl-geocoder';
+      el.className = 'maplibregl-ctrl-geocoder';
 
       var icon = document.createElement('span');
       icon.className = 'geocoder-icon geocoder-icon-search';
@@ -7523,7 +7522,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
  // substack/brfs#39
-var tmpl = (0, _lodash2.default)("<div class='mapbox-directions-component mapbox-directions-inputs'>\n  <div class='mapbox-directions-component-keyline'>\n    <div class='mapbox-directions-origin'>\n      <label class='mapbox-form-label'>\n        <span class='directions-icon directions-icon-depart'></span>\n      </label>\n      <div id='mapbox-directions-origin-input'></div>\n    </div>\n\n    <button\n      class='directions-icon directions-icon-reverse directions-reverse js-reverse-inputs'\n      title='Reverse origin &amp; destination'>\n    </button>\n\n    <div class='mapbox-directions-destination'>\n      <label class='mapbox-form-label'>\n        <span class='directions-icon directions-icon-arrive'></span>\n      </label>\n      <div id='mapbox-directions-destination-input'></div>\n    </div>\n  </div>\n\n  <% if (controls.profileSwitcher) { %>\n  <div class='mapbox-directions-profile mapbox-directions-component-keyline mapbox-directions-clearfix'><input\n      id='mapbox-directions-profile-driving-traffic'\n      type='radio'\n      name='profile'\n      value='mapbox/driving-traffic'\n      <% if (profile === 'mapbox/driving-traffic') { %>checked<% } %>\n    />\n    <label for='mapbox-directions-profile-driving-traffic'>Traffic</label>\n    <input\n      id='mapbox-directions-profile-driving'\n      type='radio'\n      name='profile'\n      value='mapbox/driving'\n      <% if (profile === 'mapbox/driving') { %>checked<% } %>\n    />\n    <label for='mapbox-directions-profile-driving'>Driving</label>\n    <input\n      id='mapbox-directions-profile-walking'\n      type='radio'\n      name='profile'\n      value='mapbox/walking'\n      <% if (profile === 'mapbox/walking') { %>checked<% } %>\n    />\n    <label for='mapbox-directions-profile-walking'>Walking</label>\n    <input\n      id='mapbox-directions-profile-cycling'\n      type='radio'\n      name='profile'\n      value='mapbox/cycling'\n      <% if (profile === 'mapbox/cycling') { %>checked<% } %>\n    />\n    <label for='mapbox-directions-profile-cycling'>Cycling</label>\n  </div>\n  <% } %>\n</div>\n");
+var tmpl = (0, _lodash2.default)("<div class='maplibre-directions-component maplibre-directions-inputs'>\n  <div class='maplibre-directions-component-keyline'>\n    <div class='maplibre-directions-origin'>\n      <label class='maplibre-form-label'>\n        <span class='directions-icon directions-icon-depart'></span>\n      </label>\n      <div id='maplibre-directions-origin-input'></div>\n    </div>\n\n    <button\n      class='directions-icon directions-icon-reverse directions-reverse js-reverse-inputs'\n      title='Reverse origin &amp; destination'>\n    </button>\n\n    <div class='maplibre-directions-destination'>\n      <label class='maplibre-form-label'>\n        <span class='directions-icon directions-icon-arrive'></span>\n      </label>\n      <div id='maplibre-directions-destination-input'></div>\n    </div>\n  </div>\n\n  <% if (controls.profileSwitcher) { %>\n  <div class='maplibre-directions-profile maplibre-directions-component-keyline maplibre-directions-clearfix'><input\n      id='maplibre-directions-profile-driving-traffic'\n      type='radio'\n      name='profile'\n      value='maplibre/driving-traffic'\n      <% if (profile === 'maplibre/driving-traffic') { %>checked<% } %>\n    />\n    <label for='maplibre-directions-profile-driving-traffic'>Traffic</label>\n    <input\n      id='maplibre-directions-profile-driving'\n      type='radio'\n      name='profile'\n      value='maplibre/driving'\n      <% if (profile === 'maplibre/driving') { %>checked<% } %>\n    />\n    <label for='maplibre-directions-profile-driving'>Driving</label>\n    <input\n      id='maplibre-directions-profile-walking'\n      type='radio'\n      name='profile'\n      value='maplibre/walking'\n      <% if (profile === 'maplibre/walking') { %>checked<% } %>\n    />\n    <label for='maplibre-directions-profile-walking'>Walking</label>\n    <input\n      id='maplibre-directions-profile-cycling'\n      type='radio'\n      name='profile'\n      value='maplibre/cycling'\n      <% if (profile === 'maplibre/cycling') { %>checked<% } %>\n    />\n    <label for='maplibre-directions-profile-cycling'>Cycling</label>\n  </div>\n  <% } %>\n</div>\n");
 
 /**
  * Inputs controller
@@ -7531,7 +7530,7 @@ var tmpl = (0, _lodash2.default)("<div class='mapbox-directions-component mapbox
  * @param {HTMLElement} el Summary parent container
  * @param {Object} store A redux store
  * @param {Object} actions Actions an element can dispatch
- * @param {Object} map The mapboxgl instance
+ * @param {Object} map The maplibregl instance
  * @private
  */
 
@@ -7604,13 +7603,13 @@ var Inputs = function () {
       this.originInput = new _geocoder2.default(Object.assign({}, {}, geocoder, { flyTo: flyTo, placeholder: placeholderOrigin, zoom: zoom }));
 
       var originEl = this.originInput.onAdd(this._map);
-      var originContainerEl = this.container.querySelector('#mapbox-directions-origin-input');
+      var originContainerEl = this.container.querySelector('#maplibre-directions-origin-input');
       originContainerEl.appendChild(originEl);
 
       this.destinationInput = new _geocoder2.default(Object.assign({}, {}, geocoder, { flyTo: flyTo, placeholder: placeholderDestination, zoom: zoom }));
 
       var destinationEl = this.destinationInput.onAdd(this._map);
-      this.container.querySelector('#mapbox-directions-destination-input').appendChild(destinationEl);
+      this.container.querySelector('#maplibre-directions-destination-input').appendChild(destinationEl);
 
       this.originInput.on('result', function (e) {
         var coords = e.result.geometry.coordinates;
@@ -7716,7 +7715,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
  // substack/brfs#39
 var instructionsTemplate = (0, _lodash2.default)("<div class='directions-control directions-control-directions'>\n  <div class='mapbox-directions-component mapbox-directions-route-summary<% if (routes > 1) { %> mapbox-directions-multiple<% } %>'>\n    <% if (routes > 1) { %>\n    <div class='mapbox-directions-routes mapbox-directions-clearfix'>\n      <% for (var i = 0; i < routes; i++) { %>\n        <input type='radio' name='routes' id='<%= i %>' <% if (i === routeIndex) { %>checked<% } %>>\n        <label for='<%= i %>' class='mapbox-directions-route'><%= i + 1 %></label>\n      <% } %>\n    </div>\n    <% } %>\n    <h1><%- duration %></h1>\n    <span><%- distance %></span>\n  </div>\n\n  <div class='mapbox-directions-instructions'>\n    <div class='mapbox-directions-instructions-wrapper'>\n      <ol class='mapbox-directions-steps'>\n        <% steps.forEach(function(step) { %>\n          <%\n            var distance = step.distance ? format(step.distance) : false;\n            var icon = step.maneuver.modifier ? step.maneuver.modifier.replace(/\\s+/g, '-').toLowerCase() : step.maneuver.type.replace(/\\s+/g, '-').toLowerCase();\n\n            if (step.maneuver.type === 'arrive' || step.maneuver.type === 'depart') {\n              icon = step.maneuver.type;\n            }\n\n            if (step.maneuver.type === 'roundabout' || step.maneuver.type === 'rotary') {\n              icon= 'roundabout';\n            }\n\n            var lng = step.maneuver.location[0];\n            var lat = step.maneuver.location[1];\n          %>\n          <li\n            data-lat='<%= lat %>'\n            data-lng='<%= lng %>'\n            class='mapbox-directions-step'>\n            <span class='directions-icon directions-icon-<%= icon %>'></span>\n            <div class='mapbox-directions-step-maneuver'>\n              <%= step.maneuver.instruction %>\n              <%= step.maneuver.modifier %>\n            </div>\n            <% if (distance) { %>\n              <div class='mapbox-directions-step-distance'>\n                <%= distance %>\n              </div>\n            <% } %>\n          </li>\n        <% }); %>\n      </ol>\n    </div>\n  </div>\n</div>\n");
-var errorTemplate = (0, _lodash2.default)("<div class='directions-control directions-control-directions'>\n  <div class='mapbox-directions-error'>\n    <%= error %>\n  </div>\n</div>\n");
+var errorTemplate = (0, _lodash2.default)("<div class='directions-control directions-control-directions'>\n  <div class='maplibre-directions-error'>\n    <%= error %>\n  </div>\n</div>\n");
 
 /**
  * Summary/Instructions controller
@@ -7724,7 +7723,7 @@ var errorTemplate = (0, _lodash2.default)("<div class='directions-control direct
  * @param {HTMLElement} el Summary parent container
  * @param {Object} store A redux store
  * @param {Object} actions Actions an element can dispatch
- * @param {Object} map The mapboxgl instance
+ * @param {Object} map The maplibregl instance
  * @private
  */
 
@@ -7784,7 +7783,7 @@ var Instructions = function () {
             distance: _utils2.default.format.duration(direction.duration)
           });
 
-          var steps = _this.container.querySelectorAll('.mapbox-directions-step');
+          var steps = _this.container.querySelectorAll('.maplibre-directions-step');
 
           Array.prototype.forEach.call(steps, function (el) {
             var lng = el.getAttribute('data-lng');
@@ -7884,7 +7883,7 @@ var store = storeWithMiddleware(_reducers2.default);
  * @class MapLibreDirections
  *
  * @param {Object} options
- * @param {Array} [options.styles] Override default layer properties of the [directions source](https://github.com/mapbox/mapbox-gl-directions/blob/master/src/directions_style.js). Documentation for each property are specified in the [Mapbox GL Style Reference](https://www.mapbox.com/mapbox-gl-style-spec/).
+ * @param {Array} [options.styles] Override default layer properties of the [directions source](https://github.com/astridx/maplibre-gl-directions/blob/master/src/directions_style.js). Documentation for each property are specified in the [Mapbox GL Style Reference](https://www.mapbox.com/mapbox-gl-style-spec/).
  * @param {String} [options.api="https://api.mapbox.com/directions/v5/"] Override default routing endpoint url
  * @param {Boolean} [options.interactive=true] Enable/Disable mouse or touch interactivity from the plugin
  * @param {String} [options.profile="driving"] Routing profile to use. Options: `mapbox/driving-traffic`, `mapbox/driving`, `mapbox/walking`, `mapbox/cycling`
@@ -7910,7 +7909,7 @@ var store = storeWithMiddleware(_reducers2.default);
  *   unit: 'metric',
  *   profile: 'driving'
  * });
- * // add to your mapboxgl map
+ * // add to your maplibregl map
  * map.addControl(directions);
  *
  * @return {MapLibreDirections} `this`
@@ -7941,7 +7940,7 @@ var MapLibreDirections = function () {
           controls = _store$getState.controls;
 
       var el = this.container = document.createElement('div');
-      el.className = 'mapboxgl-ctrl-directions mapboxgl-ctrl';
+      el.className = 'maplibregl-ctrl-directions maplibregl-ctrl';
 
       // Add controls to the page
       var inputEl = document.createElement('div');
