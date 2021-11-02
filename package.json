@@ -45,10 +45,10 @@
     "documentation": "^4.0.0-beta16",
     "eslint": "^2.13.1",
     "insert-css": "^2.0.0",
+    "jest": "^27.3.1",
     "json-loader": "0.5.4",
     "lodash.once": "^4.0.0",
     "maplibre-gl": "^1.14.0",
-    "tap-status": "^1.0.1",
     "transform-loader": "0.2.3",
     "webpack": "1.13.1",
     "webworkify-webpack": "1.1.7"
