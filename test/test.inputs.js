@@ -1,9 +1,8 @@
 'use strict';
 
 const once = require('lodash.once');
-const test = require('tape');
 
-test('Directions#inputControl', tt => {
+test('Directions#inputControl', () => {
   let container, map, directions;
 
   const changeEvent = document.createEvent('HTMLEvents');
@@ -22,16 +21,16 @@ test('Directions#inputControl', tt => {
 
   tt.test('profiles', (t) => {
     setup({ profile: 'mapbox/cycling' });
-    t.plan(3);
+    expect.assertions(3);
 
     var drivingEl = container.querySelector('#mapbox-directions-profile-driving');
     var cyclingEl = container.querySelector('#mapbox-directions-profile-cycling');
 
-    t.equal(drivingEl.checked, false, 'default driving profile should is false');
-    t.equal(cyclingEl.checked, true, 'cycling profile is active');
+    expect(drivingEl.checked).toBe(false);
+    expect(cyclingEl.checked).toBe(true);
 
     directions.on('profile', once((e) => {
-      t.equal(e.profile, 'mapbox/driving', 'driving profile is set and event emitted');
+      expect(e.profile).toBe('mapbox/driving');
     }));
 
     drivingEl.dispatchEvent(changeEvent);

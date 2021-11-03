@@ -1,6 +1,7 @@
 {
     "presets": [
-        "es2015"
+          "es2015", //development
+         // "@babel/preset-env" //test
     ],
     "plugins": ["transform-inline-environment-variables"]
 }

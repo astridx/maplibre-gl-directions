@@ -1,5 +1,5 @@
 {
-  "name": "@mapbox/mapbox-gl-directions",
+  "name": "@maplibre/maplibre-gl-directions",
   "version": "5.0.0",
   "description": "A maplibre plugin for the OSRM (Open Source Routing Machine - http://project-osrm.org/)",
   "main": "./src/index.js",
@@ -12,11 +12,14 @@
   "peerDependencies": {
     "maplibre-gl": ">=1.14.0"
   },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "prepublish": "npm run build",
     "start": "NODE_ENV=development budo example/index.js:example/bundle.js --live",
     "build": "NODE_ENV=production mkdir -p dist && browserify -s MapLibreDirections src/index.js > dist/maplibre-gl-directions.js && cp src/maplibre-gl-directions.css dist",
-    "test": "NODE_ENV=test npm run lint && browserify test/index.js | smokestack -b firefox | tap-status",
+    "test": "jest",
     "docs": "documentation build src/directions.js --shallow --format=md > API.md",
     "lint": "eslint --no-eslintrc -c .eslintrc src"
   },
@@ -36,19 +39,24 @@
   },
   "homepage": "https://github.com/astridx/maplibre-gl-directions#readme",
   "devDependencies": {
-    "babel-core": "^6.9.1",
-    "babel-eslint": "^6.0.5",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.3.1",
     "babel-plugin-object-assign": "^1.2.1",
     "brfs": "^1.4.1",
     "browserify": "^13.0.1",
     "budo": "^8.3.0",
     "documentation": "^4.0.0-beta16",
-    "eslint": "^2.13.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^25.2.2",
     "insert-css": "^2.0.0",
     "jest": "^27.3.1",
     "json-loader": "0.5.4",
     "lodash.once": "^4.0.0",
     "maplibre-gl": "^1.14.0",
+    "regenerator-runtime": "^0.13.9",
     "transform-loader": "0.2.3",
     "webpack": "1.13.1",
     "webworkify-webpack": "1.1.7"

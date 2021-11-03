@@ -1,9 +1,8 @@
 'use strict';
 
 const once = require('lodash.once');
-const test = require('tape');
 
-test('Directions#option', tt => {
+test('Directions#option', () => {
   let container, map, directions;
 
   function setup(opts) {
@@ -15,7 +14,7 @@ test('Directions#option', tt => {
   }
 
   tt.test('option.styles', t => {
-    t.plan(1);
+    expect.assertions(1);
     setup({
       styles: [{
         'id': 'foo',
@@ -34,7 +33,7 @@ test('Directions#option', tt => {
 
     directions.setOrigin([-77, 41]);
     directions.on('origin', once(() => {
-      t.ok(map.getLayer('foo'), 'Custom layer is present');
+      expect(map.getLayer('foo')).toBeTruthy();
     }));
   });
 

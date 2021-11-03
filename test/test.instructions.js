@@ -1,9 +1,8 @@
 'use strict';
 
 const once = require('lodash.once');
-const test = require('tape');
 
-test('Directions#instructionControl', tt => {
+test('Directions#instructionControl', () => {
   let container, map, directions;
 
   function setup(opts) {
@@ -16,22 +15,22 @@ test('Directions#instructionControl', tt => {
 
   tt.test('displayed', t => {
     setup();
-    t.plan(2);
+    expect.assertions(2);
     directions.setOrigin([-79, 43]);
     directions.setDestination([-77, 41]);
     directions.on('route', once((e) => {
-      t.ok(e.route, 'route is emitted');
-      t.ok(container.querySelector('.directions-control-directions').textContent, 'instructions are shown');
+      expect(e.route).toBeTruthy();
+      expect(container.querySelector('.directions-control-directions').textContent).toBeTruthy();
     }));
   });
 
   tt.test('error', t => {
     setup();
-    t.plan(1);
+    expect.assertions(1);
     directions.setOrigin('Montreal Quebec');
     directions.setDestination('Toledo Spain');
     directions.on('error', once((e) => {
-      t.ok(e.error, 'error is emitted');
+      expect(e.error).toBeTruthy();
     }));
   });
 

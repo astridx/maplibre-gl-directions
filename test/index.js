@@ -1,6 +1,5 @@
 'use strict';
 
-const test = require('tape');
 window.mapboxgl = require('mapbox-gl');
 require('../src/index');
 
@@ -13,8 +12,7 @@ require('./test.geocoder');
 require('./test.utils');
 
 // close the smokestack window once tests are complete
-test('shutdown', (t) => {
-  t.end();
+test('shutdown', () => {
   setTimeout(() => {
     window.close();
   });

@@ -1,6 +1,5 @@
 'use strict';
 
-const test = require('tape');
 const once = require('lodash.once');
 const MapLibreDirections = require('..');
 
@@ -22,14 +21,13 @@ function setup() {
   return map;
 }
 
-test('directions', (tt) => {
+test('directions', done => {
   tt.test('initialized', t => {
     var map = setup();
     var directions = new MapLibreDirections();
     map.addControl(directions);
 
-    t.ok(directions, 'directions is initialized');
-    t.end();
+    expect(directions).toBeTruthy();
   });
 
   tt.test('set/get inputs', t => {
@@ -47,18 +45,18 @@ test('directions', (tt) => {
     directions.setDestination([-77, 41]);
 
     directions.on('origin', (e) => {
-      t.ok(directions.getOrigin(), 'origin feature is present from get');
-      t.ok(e.feature, 'origin feature is in the event object');
+      expect(directions.getOrigin()).toBeTruthy();
+      expect(e.feature).toBeTruthy();
     });
 
     directions.on('destination', (e) => {
-      t.ok(directions.getDestination(), 'destination feature is present from get');
-      t.ok(e.feature, 'destination feature is in the event object');
+      expect(directions.getDestination()).toBeTruthy();
+      expect(e.feature).toBeTruthy();
     });
 
     directions.on('route', once((e) => {
-      t.ok(e.route, 'routing data was passed');
-      t.end();
+      expect(e.route).toBeTruthy();
+      done();
     }));
 
   });
@@ -66,7 +64,7 @@ test('directions', (tt) => {
   tt.end();
 });
 
-test('Directions with custom styles', t => {
+test('Directions with custom styles', () => {
   var map = setup();
   var customLayer = {
     'id': 'directions-route-line',
@@ -89,17 +87,15 @@ test('Directions with custom styles', t => {
   var directions = new MapLibreDirections({
     styles: [customLayer]
   });
-  t.ok(map.addControl(directions));
+  expect(map.addControl(directions)).toBeTruthy();
   map.on('load', ()=>{
-    t.ok(map.getLayer('directions-route-line-alt'), 'adds default for unspecified custom layer');
-    t.deepEqual(map.getLayer('directions-route-line').serialize(), customLayer);
+    expect(map.getLayer('directions-route-line-alt')).toBeTruthy();
+    expect(map.getLayer('directions-route-line').serialize()).toEqual(customLayer);
   })
-
-  t.end();
 });
 
 
-test('Directions#onRemove', t => {
+test('Directions#onRemove', done => {
   var map = setup();
   var directions = new MapLibreDirections({
     geocoder: {
@@ -112,9 +108,9 @@ test('Directions#onRemove', t => {
   directions.setOrigin('Queen Street NY');
   directions.setDestination([-77, 41]);
   directions.on('route', once(()=>{
-    t.true(!!map.getSource('directions'), 'directions source is added');
+    expect(!!map.getSource('directions')).toBeTruthy();
     map.removeControl(directions);
-    t.false(!!map.getSource('directions'), 'directions source is removed');
-    t.end();
+    expect(!!map.getSource('directions')).toBeFalsy();
+    done();
   }));
 });

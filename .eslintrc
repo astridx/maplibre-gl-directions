@@ -1,5 +1,6 @@
 {
   "parser": "babel-eslint",
+  "plugins": ["jest"],
   "env": {
     "node": true,
     "browser": true
@@ -25,6 +26,12 @@
     "no-underscore-dangle": [0],
     "comma-spacing": [0],
     "key-spacing": [0],
-    "no-use-before-define": [0]
+    "no-use-before-define": [0],
+    // https://www.npmjs.com/package/eslint-plugin-jest
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"    
   }
 }

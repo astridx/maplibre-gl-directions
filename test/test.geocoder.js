@@ -1,14 +1,12 @@
 'use strict';
 
-const test = require('tape');
 import Geocoder from '../src/controls/geocoder';
 
-test('Geocoder#constructor', t =>{
+test('Geocoder#constructor', () => {
   t.test('default options', t =>{
     const geocoder = new Geocoder({});
-    t.equal(geocoder.api, 'https://api.mapbox.com/geocoding/v5/mapbox.places/');
-    t.deepEqual(geocoder.options, {});
-    t.end();
+    expect(geocoder.api).toBe('https://api.mapbox.com/geocoding/v5/mapbox.places/');
+    expect(geocoder.options).toEqual({});
   });
 
   t.test('placeholder option is assigned to the right places', t =>{
@@ -18,8 +16,7 @@ test('Geocoder#constructor', t =>{
     });
 
     geocoder.onAdd();
-    t.equal(geocoder._inputEl.getAttribute('placeholder'), 'foo');
-    t.end();
+    expect(geocoder._inputEl.getAttribute('placeholder')).toBe('foo');
   });
 
   // TODO test to confirm the query parameters actually get passed.
@@ -41,9 +38,6 @@ test('Geocoder#constructor', t =>{
 
   t.test('Geocoder#api', t => {
     const geocoder = new Geocoder({api: 'https://fake-geocoder.pizza'});
-    t.equal(geocoder.api, 'https://fake-geocoder.pizza');
-    t.end();
+    expect(geocoder.api).toBe('https://fake-geocoder.pizza');
   });
-
-  t.end();
 })
